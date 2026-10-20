@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -28,9 +27,9 @@
     </nav>
 
     <div class="header-icons">
-      <span>⌕</span>
-      <span>♡</span>
-      <span>🛍</span>
+      <button type="button" id="search-button" aria-label="상품 검색">⌕</button>
+      <button type="button" id="heart-button" aria-label="찜하기" aria-pressed="false">♡</button>
+      <button type="button" id="cart-button" aria-label="장바구니, 총 0개" aria-haspopup="dialog">🛍 0</button>
     </div>
   </header>
 
@@ -63,7 +62,7 @@
 
     <div class="products">
 
-      <div class="product">
+      <div class="product" data-product-id="classic-blazer" role="button" tabindex="0" aria-label="Classic Blazer 장바구니에 추가">
         <div class="product-image">
           <img
             src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=80"
@@ -78,7 +77,7 @@
       </div>
 
 
-      <div class="product">
+      <div class="product" data-product-id="silk-dress" role="button" tabindex="0" aria-label="Silk Dress 장바구니에 추가">
         <div class="product-image">
           <img
             src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=900&q=80"
@@ -92,7 +91,7 @@
       </div>
 
 
-      <div class="product">
+      <div class="product" data-product-id="modern-coat" role="button" tabindex="0" aria-label="Modern Coat 장바구니에 추가">
         <div class="product-image">
           <img
             src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=80"
@@ -182,7 +181,24 @@
     </p>
 
   </footer>
+  <!-- Cart: native dialog supports keyboard focus, Escape and focus return. -->
+  <dialog id="cart-dialog" aria-labelledby="cart-title">
+    <div class="cart-heading">
+      <h2 id="cart-title">장바구니</h2>
+      <button type="button" id="cart-close" aria-label="장바구니 닫기">×</button>
+    </div>
+    <p id="cart-empty">장바구니가 비어 있습니다.</p>
+    <ul id="cart-items" aria-label="담은 상품"></ul>
+    <div class="cart-summary">
+      <span>상품 합계</span>
+      <strong id="cart-total">₩0</strong>
+    </div>
+    <p class="cart-note">배송비 및 할인은 포함되지 않은 상품 합계입니다. 현재 결제는 지원하지 않습니다.</p>
+    <p id="cart-dialog-warning" class="cart-note" role="status" hidden></p>
+    <p id="cart-dialog-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+  </dialog>
+  <p id="cart-storage-warning" role="status" hidden></p>
+  <p id="cart-status" class="cart-status" role="status" aria-live="polite" aria-atomic="true"></p>
   <script src="script.js"></script>
 </body>
 </html>
-```
