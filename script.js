@@ -271,36 +271,44 @@ heartIcon.addEventListener("click", function () {
 // =========================
 
 const searchIcon = document.querySelector("#search-button");
-
-searchIcon.addEventListener("click", function () {
-
-  const keyword = prompt("찾고 싶은 상품을 입력해주세요.");
-
-  if (!keyword) {
-    return;
-  }
-
-  const result = products.filter(function (product) {
-
-    return product.name
-      .toLowerCase()
-      .includes(keyword.toLowerCase());
-
+const searchDialog = document.querySelector("#search-dialog");
+const searchInput = document.querySelector("#search-input");
+const searchResults = document.querySelector("#search-results");
+const searchAliases = { "classic-blazer": "블레이저 자켓 재킷", "silk-dress": "실크 드레스 원피스", "modern-coat": "모던 코트 아우터" };
+function renderSearch() {
+  const query = searchInput.value.trim().toLocaleLowerCase();
+  const results = products.filter(product => `${product.name} ${searchAliases[product.id]}`.toLocaleLowerCase().includes(query));
+  searchResults.replaceChildren();
+  document.querySelector("#search-result-title").textContent = query ? "SEARCH RESULTS" : "ALL COLLECTION";
+  document.querySelector("#search-count").textContent = `${results.length}개의 상품`;
+  document.querySelector("#search-empty").hidden = results.length > 0;
+  document.querySelector("#search-feedback").textContent = "";
+  results.forEach(product => {
+    const row = document.createElement("li");
+    const image = document.createElement("img"); image.src = product.image; image.alt = product.name;
+    const details = document.createElement("div");
+    const name = document.createElement("h4"); name.textContent = product.name;
+    const price = document.createElement("p"); price.textContent = formatPrice(product.price);
+    const add = document.createElement("button"); add.type = "button"; add.textContent = "장바구니 담기 +";
+    add.setAttribute("aria-label", `${product.name} 장바구니 담기`);
+    add.addEventListener("click", () => {
+      const oldQuantity = cart.find(item => item.id === product.id)?.quantity || 0;
+      addToCart(product.id);
+      document.querySelector("#search-feedback").textContent = oldQuantity >= MAX_QUANTITY ? `상품별 최대 수량은 ${MAX_QUANTITY}개입니다.` : `${product.name}을 장바구니에 담았습니다.`;
+    });
+    details.append(name, price, add); row.append(image, details); searchResults.append(row);
   });
-
-  if (result.length > 0) {
-
-    alert(
-      `${result.length}개의 상품을 찾았습니다.\n\n` +
-      result.map(product => product.name).join("\n")
-    );
-
-  } else {
-
-    alert("검색 결과가 없습니다.");
-
-  }
-
+}
+searchIcon.setAttribute("aria-haspopup", "dialog");
+searchIcon.addEventListener("click", () => { renderSearch(); searchDialog.showModal(); searchInput.focus(); });
+searchInput.addEventListener("input", renderSearch);
+document.querySelector("#search-form").addEventListener("submit", event => { event.preventDefault(); renderSearch(); });
+document.querySelectorAll("[data-query]").forEach(button => button.addEventListener("click", () => { searchInput.value = button.dataset.query; renderSearch(); searchInput.focus(); }));
+document.querySelector("#search-reset").addEventListener("click", () => { searchInput.value = ""; renderSearch(); searchInput.focus(); });
+document.querySelectorAll("[data-close]").forEach(button => button.addEventListener("click", () => document.getElementById(button.dataset.close).close()));
+searchDialog.addEventListener("click", event => {
+  const rect = searchDialog.getBoundingClientRect();
+  if (event.target === searchDialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) searchDialog.close();
 });
 
 

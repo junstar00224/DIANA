@@ -537,3 +537,37 @@ body:has(#cart-dialog[open]) { overflow: hidden; }
   .cart-quantity { gap: 4px; }
   .cart-quantity button { padding: 4px 8px; }
 }
+
+/* Boutique search and account dialogs. */
+.boutique-modal { margin: auto; width: min(720px, calc(100% - 32px)); max-height: 88vh; max-height: 88dvh; overflow: auto; padding: 36px 44px 24px; border: 1px solid #e4ded3; background: #fbfaf7; color: #29261f; box-shadow: 0 24px 100px #0003; }
+.boutique-modal::backdrop { background: #15130f80; backdrop-filter: blur(7px); }
+body:has(dialog[open]) { overflow: hidden; }
+.modal-topline { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.modal-topline span { font-size: 10px; letter-spacing: 3px; color: #897a64; }
+.boutique-modal button { cursor: pointer; font: inherit; }
+.modal-close { width: 36px; height: 36px; font-size: 28px !important; border: 0; background: transparent; color: #776d5d; }
+.boutique-modal h2 { font-family: "Playfair Display", serif; font-size: clamp(30px, 5vw, 43px); font-weight: 400; line-height: 1.2; }
+.modal-subtitle { margin-top: 12px; font-size: 12px; line-height: 1.8; color: #837d72; }
+.search-field { display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #a69a86; margin-top: 32px; padding-bottom: 12px; }
+.search-field svg { flex-shrink: 0; color: #8e7b5d; }
+.search-field input { width: 100%; min-width: 0; padding: 10px 0; border: 0; background: transparent; font: inherit; font-size: 14px; color: #29261f; }
+.search-field button { white-space: nowrap; background: transparent; border: 0; font-size: 12px; }
+.search-suggestions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 16px 0 32px; }
+.search-suggestions span { font-size: 10px; color: #8d8679; margin-right: 5px; }
+.search-suggestions button { border: 1px solid #e5dfd4; background: transparent; border-radius: 30px; padding: 7px 13px; font-size: 11px; color: #6d6251; }
+.search-suggestions button:hover { background: #eee9df; }
+.search-result-heading { display: flex; justify-content: space-between; align-items: center; padding-bottom: 13px; border-bottom: 1px solid #e6e0d5; }
+.search-result-heading h3 { font-size: 10px; letter-spacing: 2px; font-weight: 500; }
+.search-result-heading p { font-size: 11px; color: #8d8679; }
+.search-results { list-style: none; }
+.search-results li { display: flex; gap: 22px; align-items: center; padding: 18px 0; border-bottom: 1px solid #e6e0d5; }
+.search-results img { width: 78px; height: 98px; object-fit: cover; background: #e5dfd4; }
+.search-results h4 { font-size: 14px; font-weight: 500; }
+.search-results p { font-size: 12px; color: #8d8679; margin: 5px 0 12px; }
+.search-results button, .search-empty button { background: transparent; border: 0; color: #756347; font-size: 11px; }
+.search-results button:hover { text-decoration: underline; }
+.search-feedback { min-height: 20px; margin-top: 16px; font-size: 12px; color: #756347; }
+.search-empty { text-align: center; padding: 40px 0; }
+.search-empty p { font-size: 15px; margin-bottom: 10px; }
+.search-empty span { display: block; font-size: 12px; color: #8d8679; margin-bottom: 20px; }
+@media (max-width: 600px) { .boutique-modal { padding: 24px 22px 18px; } .search-field { gap: 8px; } .search-field input { font-size: 16px; } .modal-topline { margin-bottom: 22px; } }

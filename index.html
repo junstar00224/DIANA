@@ -199,6 +199,22 @@
   </dialog>
   <p id="cart-storage-warning" role="status" hidden></p>
   <p id="cart-status" class="cart-status" role="status" aria-live="polite" aria-atomic="true"></p>
+  <dialog id="search-dialog" class="boutique-modal" aria-labelledby="search-title">
+    <div class="modal-topline"><span>DIANA / COLLECTION</span><button type="button" class="modal-close" data-close="search-dialog" aria-label="검색 닫기">×</button></div>
+    <h2 id="search-title">Find your next favorite.</h2>
+    <p class="modal-subtitle">당신의 일상에 어울리는 한 벌을 찾아보세요.</p>
+    <form id="search-form" class="search-field" role="search">
+      <label for="search-input" class="sr-only">상품 검색</label>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="1.5"/></svg>
+      <input id="search-input" type="search" placeholder="상품명 또는 키워드를 입력하세요" autocomplete="off" maxlength="100">
+      <button type="submit">검색 →</button>
+    </form>
+    <div class="search-suggestions"><span>추천 검색어</span><button type="button" data-query="블레이저">블레이저</button><button type="button" data-query="드레스">드레스</button><button type="button" data-query="코트">코트</button></div>
+    <div class="search-result-heading"><h3 id="search-result-title">ALL COLLECTION</h3><p id="search-count" role="status" aria-live="polite"></p></div>
+    <ul id="search-results" class="search-results" aria-label="검색 결과"></ul>
+    <div id="search-empty" class="search-empty" hidden><p>검색 결과가 없습니다.</p><span>다른 상품명이나 추천 검색어로 찾아보세요.</span><button type="button" id="search-reset">전체 상품 보기 →</button></div>
+    <p class="search-feedback" id="search-feedback" role="status" aria-live="polite"></p>
+  </dialog>
   <script src="script.js"></script>
 </body>
 </html>
