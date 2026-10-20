@@ -571,3 +571,13 @@ body:has(dialog[open]) { overflow: hidden; }
 .search-empty p { font-size: 15px; margin-bottom: 10px; }
 .search-empty span { display: block; font-size: 12px; color: #8d8679; margin-bottom: 20px; }
 @media (max-width: 600px) { .boutique-modal { padding: 24px 22px 18px; } .search-field { gap: 8px; } .search-field input { font-size: 16px; } .modal-topline { margin-bottom: 22px; } }
+
+.header-icons { align-items: center; }
+.header-icons .login-button { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; border: 1px solid #d5ccbd; padding: 9px 13px; border-radius: 2px; transition: background .2s; }
+.header-icons .login-button:hover { background: #eee9df; }
+.header-icons .login-button:disabled { opacity: .6; cursor: wait; }
+.header-icons [hidden] { display: none !important; }
+.auth-status { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); width: max-content; max-width: calc(100% - 32px); padding: 14px 20px; background: #29261f; color: #fff; font-size: 12px; line-height: 1.8; z-index: 1000; }
+.auth-status:empty { display: none; }
+@media (min-width: 769px) and (max-width: 1100px) { .header { padding-inline: 28px; } .nav { gap: 20px; } .header-icons { gap: 12px; } }
+@media (max-width: 420px) { .header { padding-inline: 14px; } .header-icons { gap: 10px; } .header-icons .login-button { padding: 8px; gap: 4px; font-size: 11px; } .header-icons .login-button svg { display: none; } }

@@ -34,7 +34,7 @@
       <a href="about.html" aria-current="page">ABOUT</a>
       <a href="index.html#contact">CONTACT</a>
     </nav>
-    <a class="text-button" href="index.html">BACK TO HOME →</a>
+    <div class="header-icons"><button type="button" id="login-button" class="login-button" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2" stroke="currentColor" stroke-width="1.4"/></svg><span>로그인</span></button><div id="account-menu" hidden></div></div>
   </header>
   <main>
     <section class="brand-intro" aria-labelledby="intro-title">
@@ -67,5 +67,8 @@
     <div class="footer-menu"><a href="index.html">HOME</a><a href="index.html#new">COLLECTION</a><a href="index.html#contact">CONTACT</a></div>
     <p class="copyright">© 2026 DIANA. ALL RIGHTS RESERVED.</p>
   </footer>
+  <p id="auth-status" class="auth-status" role="status" aria-live="polite"></p>
+  <script src="auth-config.js"></script>
+  <script src="auth.js" defer></script>
 </body>
 </html>

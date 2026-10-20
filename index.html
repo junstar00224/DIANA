@@ -27,6 +27,7 @@
     </nav>
 
     <div class="header-icons">
+      <button type="button" id="login-button" class="login-button" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2" stroke="currentColor" stroke-width="1.4"/></svg><span>로그인</span></button><div id="account-menu" hidden></div>
       <button type="button" id="search-button" aria-label="상품 검색">⌕</button>
       <button type="button" id="heart-button" aria-label="찜하기" aria-pressed="false">♡</button>
       <button type="button" id="cart-button" aria-label="장바구니, 총 0개" aria-haspopup="dialog">🛍 0</button>
@@ -216,5 +217,8 @@
     <p class="search-feedback" id="search-feedback" role="status" aria-live="polite"></p>
   </dialog>
   <script src="script.js"></script>
+  <p id="auth-status" class="auth-status" role="status" aria-live="polite"></p>
+  <script src="auth-config.js"></script>
+  <script src="auth.js" defer></script>
 </body>
 </html>
